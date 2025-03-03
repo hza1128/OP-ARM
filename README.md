@@ -1,4 +1,4 @@
-
+istoreos风格固件，L大经典luci，流畅稳定！
 
 ![68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f4a656a7a3136382f506963747572652f4f70656e5772742d6c6f676f2e706e67](https://user-images.githubusercontent.com/72865351/220032469-2f1fc659-cf8b-4f3b-ade1-603fa12a92b0.png)
 
@@ -9,7 +9,7 @@
 
 项目使用 Github Actions 拉取 Lean 的 Openwrt 源码仓库进行云编译
 
-固件默认 IP 地址：192.168.1.1 默认密码：password 无线默认密码：password
+固件默认 IP 地址：192.168.10.11 默认密码：password 无线默认密码：password
 
 
 
