@@ -29,7 +29,7 @@ env:
   RECENT_LASTEST: 30
   TZ: Asia/Shanghai
   FILE_NAME: Qemu
-  PRODUCT_NAME: ARMv8
+  PRODUCT_NAME: Qemu
 
 jobs:
   build:
