@@ -73,7 +73,7 @@ jobs:
         WHOAMI: Demons
         KERNEL_REPO_URL: https://github.com/ophub/kernel/releases/tag/kernel_stable
         KERNEL_VERSION_NAME: 6.1.1_6.6.1_6.12.1
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
         OPENWRT_VER: R25.2.5
         KERNEL_AUTO_LATEST: true
         GZIP_IMGS: .gz
@@ -94,10 +94,10 @@ jobs:
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
         commit: main
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GIT_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
-          - 默认 IP：192.168.1.1  默认密码：password ( WiFi 密码相同 ）
+          - 默认 IP：192.168.10.11  默认密码：password ( WiFi 密码相同 ）
           - 默认 DTB 文件为超频版 ( 大核 2.0 小核 1.6 ），原 DTB 文件备份在目录中，可自行恢复
           - 当前使用版本:【 编译前的最后一次➦[主源码](https://github.com/coolsnowwolf/lede)更新记录 】
           ${{ env.useVersionInfo }}
