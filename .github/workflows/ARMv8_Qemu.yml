@@ -4,7 +4,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 
-name: ARMv8_Qemu
+name: Panther-X2-OpenWrt
 
 on:
   repository_dispatch:
@@ -28,8 +28,8 @@ env:
   UPLOAD_RELEASE: true
   RECENT_LASTEST: 30
   TZ: Asia/Shanghai
-  FILE_NAME: Qemu
-  PRODUCT_NAME: Qemu
+  FILE_NAME: qemu
+  PRODUCT_NAME: ARMv8
 
 jobs:
   build:
@@ -51,6 +51,7 @@ jobs:
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
     - name: Clone source code
       working-directory: /workdir
       run: |
@@ -62,26 +63,20 @@ jobs:
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
         echo "DATE1=$(date "+%Y-%m-%d")" >> $GITHUB_ENV
+
     - name: Package Armvirt as OpenWrt
       if: (!cancelled())
-      uses: ophub/flippy-openwrt-actions@main
+      uses: Zane-E/openwrt_packit@master
       env:
         OPENWRT_ARMVIRT: https://github.com/hza1128/OP-ARM/releases/download/openwrt_armvirt/openwrt-armvirt-64-generic-rootfs.tar.gz
         PACKAGE_SOC: qemu
         WHOAMI: Demons
-        #KERNEL_REPO_URL: https://github.com/breakings/OpenWrt/tree/main/opt
-        KERNEL_VERSION_NAME: 6.1.84_6.6.24
-        OPENWRT_VER: R25.2.5
+        # KERNEL_REPO_URL: https://github.com/breakingbadboy/OpenWrt/releases/tag/kernel_stable
+        KERNEL_VERSION_NAME: 6.1.1_6.6.1_6.12.1
+        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
+        OPENWRT_VER: R25.3.15
         KERNEL_AUTO_LATEST: true
         GZIP_IMGS: .gz
-        GH_TOKEN: ${{ secrets.GIT_TOKEN }}
-
-    - name: SSH connection to Actions @ Ctrl+C to enter, Ctrl+D to exit
-      uses: P3TERX/ssh2actions@main
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: Upload artifact to Actions
       uses: kittaakos/upload-artifact-as-is@master
@@ -102,9 +97,10 @@ jobs:
         token: ${{ secrets.GIT_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
-          - 默认IP：192.168.10.11  默认密码：password ( WiFi 密码相同 ）
+          - 默认 IP：192.168.1.1  默认密码：password ( WiFi 密码相同 ）
           - 当前使用版本:【 编译前的最后一次➦[主源码](https://github.com/coolsnowwolf/lede)更新记录 】
           ${{ env.useVersionInfo }}
+
     - name: Delete releases and workflows runs
       uses: ophub/delete-releases-workflows@main
       with:
@@ -112,13 +108,4 @@ jobs:
         releases_keep_latest: 10
         delete_workflows: true
         workflows_keep_day: 3
-        gh_token: ${{ secrets.GIT_TOKEN }}          
-
-    - name: Telegram notification
-      run: |
-        MSG="
-        打包时间：${{ env.DATE }}
-        OpenWrt 更新信息：${{ env.useVersionInfo }}
-        ${{ env.PRODUCT_NAME }} 打包完成
-        "
-        curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_TO }}&text=${MSG}"
+        gh_token: ${{ secrets.GIT_TOKEN }}
