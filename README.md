@@ -4,7 +4,7 @@
 
 
 
-[![Snipaste_2024-01-01_14-32-11](https://github.com/Zane-E/OP-ARM/assets/72865351/bb964673-21bd-4e8f-9c97-0d67810b3de8)](https://raw.githubusercontent.com/hza1128/OP-ARM/refs/heads/main/istoreos.jpg)
+[![Snipaste_2024-01-01_14-32-11](https://raw.githubusercontent.com/hza1128/OP-ARM/refs/heads/main/istoreos.jpg)
 
 istoreos风格固件
 
