@@ -6,10 +6,11 @@
 
 ![Snipaste_2024-01-01_14-32-11](https://github.com/Zane-E/OP-ARM/assets/72865351/bb964673-21bd-4e8f-9c97-0d67810b3de8)
 
+istoreos风格固件
 
 项目使用 Github Actions 拉取 Lean 的 Openwrt 源码仓库进行云编译
 
-固件默认 IP 地址：192.168.1.1 默认密码：password 无线默认密码：password
+固件默认 IP 地址：192.168.10.11 默认密码：password 无线默认密码：password
 
 
 
