@@ -101,7 +101,7 @@ jobs:
         removeArtifacts: true
         tag: ${{ env.FILE_NAME }}
         commit: main
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GIT_TOKEN }}
         artifacts: ${{ env.PACKAGED_OUTPUTPATH }}/*
         body: |
           - 默认IP：192.168.1.1  默认密码：password ( WiFi 密码相同 ）
@@ -115,7 +115,7 @@ jobs:
         releases_keep_latest: 10
         delete_workflows: true
         workflows_keep_day: 3
-        gh_token: ${{ secrets.GITHUB_TOKEN }}
+        gh_token: ${{ secrets.GIT_TOKEN }}
 
     - name: Telegram notification
       run: |
