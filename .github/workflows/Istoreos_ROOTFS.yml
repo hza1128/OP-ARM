@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: ARMv8_ROOTFS
+name: Istoreos_ROOTFS
 
 on:
   repository_dispatch:
