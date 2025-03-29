@@ -4,7 +4,7 @@
 # Cron: min (0 - 59) / hour (0 - 23) / day of month (1 - 31) / month (1 - 12) / day of week (0 - 6)(Sunday - Saturday)
 #========================================================================================================================
 
-name: ARMv8_Qemu
+name: ARMv8_Qemu-1
 
 on:
   repository_dispatch:
@@ -68,7 +68,7 @@ jobs:
       if: (!cancelled())
       uses: Zane-E/openwrt_packit@master
       env:
-        OPENWRT_ARMVIRT: https://github.com/hza1128/OP-ARM/releases/download/openwrt_armvirt/openwrt-armvirt-64-generic-rootfs.tar.gz
+        OPENWRT_ARMVIRT: https://github.com/hza1128/ARM-ROOTFS/releases/download/ROOTFS/openwrt-armvirt-64-generic-rootfs.tar.gz
         PACKAGE_SOC: qemu
         WHOAMI: Demons
         # KERNEL_REPO_URL: https://github.com/breakingbadboy/OpenWrt/releases/tag/kernel_stable
