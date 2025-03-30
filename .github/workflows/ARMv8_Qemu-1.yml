@@ -68,7 +68,7 @@ jobs:
       if: (!cancelled())
       uses: Zane-E/openwrt_packit@master
       env:
-        OPENWRT_ARMVIRT: https://github.com/hza1128/ARM-ROOTFS/releases/download/ROOTFS/openwrt-armvirt-64-generic-rootfs.tar.gz
+        OPENWRT_ARMVIRT: https://github.com/ljkk-li/Actions-OpenWrt-hold/releases/download/Files4Build/openwrt-armvirt-64-generic-rootfs.tar.gz
         PACKAGE_SOC: qemu
         WHOAMI: Demons
         # KERNEL_REPO_URL: https://github.com/breakingbadboy/OpenWrt/releases/tag/kernel_stable
