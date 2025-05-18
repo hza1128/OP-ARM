@@ -79,5 +79,8 @@ date_version=$(date +"%y.%m.%d")
 orig_version=$(cat "package/lean/default-settings/files/zzz-default-settings" | grep DISTRIB_REVISION= | awk -F "'" '{print $2}')
 sed -i "s/${orig_version}/R${date_version}  by hza1128/g" package/lean/default-settings/files/zzz-default-settings
 
+#删除重复插件
+rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
